@@ -1,7 +1,7 @@
 
 public class FetchRegister {
 
-    public int wordSize = 0;
+    public int wordSize = 8;
     public boolean[] v;
     public String name;
 
