@@ -32,6 +32,6 @@ public class FetchPSW {
     public boolean getC() {return C;}
 
     public void print() {
-        System.out.println("PSQ: N=" + N + " Z=" + Z + " V=" + V + " C=" + C);
+        System.out.println("PSW: N=" + N + " Z=" + Z + " V=" + V + " C=" + C);
     }
 }

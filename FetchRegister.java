@@ -21,6 +21,13 @@ public class FetchRegister {
         else
             v[index] = true;
     }
+    
+    public void setBit (int index,boolean value){
+        if(index > v.length)
+            throw new IndexOutOfBoundsException("index is out of bounds");
+        else
+            v[index] = value;
+    }
 
     public void clrBit (int index){
         if (index > v.length)

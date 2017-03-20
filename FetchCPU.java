@@ -1,7 +1,7 @@
 
 public class FetchCPU {
 
-    public FetchRegister r0, r1, r2, r3, pc, sp;
+    public FetchRegister r0, r1, r2, r3, pc, sp,out;
     public FetchPSW psw;
     public FetchALU alu;
     public FetchMem data;
@@ -25,6 +25,8 @@ public class FetchCPU {
         r1 = new FetchRegister( "r1");
         r2 = new FetchRegister( "r2");
         r3 = new FetchRegister( "r3");
+        
+        out=new FetchRegister("out");
         
         //op = new FetchRegister ("op", 4);
 
