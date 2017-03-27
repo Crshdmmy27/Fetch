@@ -1,8 +1,5 @@
 
 
-/**
- * Created by Lawton on 3/17/2017.
- */
 public class AndGate extends Gate{
 
     //has 2 inputs and 1 output

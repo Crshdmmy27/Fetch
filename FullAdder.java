@@ -19,7 +19,7 @@ public class FullAdder {
     public Wire execute() {
 
         Wire w1 = new Wire();
-        System.out.println(w1.getA() + "," + w1.getB() + "," + w1.getC() + "," + w1.getS() + "," + w1.getX());
+        //System.out.println(w1.getA() + "," + w1.getB() + "," + w1.getC() + "," + w1.getS() + "," + w1.getX());
         w1.set(wire.getB(), wire.getX());
         // System.out.println(w1.getA());
         h1.set(w1.getA(), w1.getB());

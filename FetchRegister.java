@@ -42,11 +42,21 @@ public class FetchRegister {
         else
             return v [index];
     }
-
-
+    
     public void setBits(){
         for (int i = 0; i < v.length; i++)
             v[i] = true;
+    }
+    
+    public void clrBits(){
+        for (int i = 0; i < v.length; i++)
+            v[i] = false;
+    }
+    
+    public void negBits(){
+    	for (int i = 0; i < v.length; i++)
+    		if (v[i]== false){v[i] = true;}
+    		else if (v[i]== true){v[i] = false;}
     }
 
     public boolean[] getBits(){
@@ -55,8 +65,10 @@ public class FetchRegister {
 
     public void print(){
         System.out.print(this.name + " ");
-        for (int i = 0; i < v.length; i++)
+        for (int i = 7; i >=0; i--)
             System.out.print(v[i] + " ");
         System.out.println();
     }
+    
+    
 }

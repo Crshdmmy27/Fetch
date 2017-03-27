@@ -139,7 +139,7 @@ public class FetchALU {
 //        }
         
       //actual execution for the 4-bit alu
-        public void execute(FetchRegister first, FetchRegister second, FetchRegister out, String operation) {
+        public FetchRegister execute(FetchRegister first, FetchRegister second, FetchRegister out, String operation) {
         	firstBoolean=first;
         	secondBoolean=second;
         	outputBoolean=out;
@@ -272,8 +272,7 @@ public class FetchALU {
                     }
                 }
             }
-            
-
+            return outputBoolean;
             
             }
 

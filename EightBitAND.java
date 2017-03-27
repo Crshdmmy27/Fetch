@@ -13,6 +13,8 @@ public class EightBitAND {
     boolean[] inputA= new boolean[8];
     boolean[] inputB= new boolean[8];
     boolean[] output = new boolean[8];
+    
+    
 
     String[] outArray= new String[8];
 
@@ -24,21 +26,21 @@ public class EightBitAND {
 
     }
 
-    public void execute(){
-        inputA = toBoolean(inA);
-        inputB = toBoolean(inB);
+    public void execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
+//        inputA = toBoolean(inA);
+//        inputB = toBoolean(inB);
 
         for(int i = 7; i>=0;i--){
             and[i]= new AndGate();
-            and[i].set(inputA[i], inputB[i],output[i]);
-            output[i]=and[i].execute();
+            and[i].set(r1.getBit(i), r2.getBit(i),out.getBit(i));
+            out.setBit(i,and[i].execute());
         }
 
-        outArray=toInt(output);
-        out="";
-        for (int i = 0; i < 8; i++) {
-            out += outArray[i];
-        }
+//        outArray=toInt(output);
+//        out="";
+//        for (int i = 0; i < 8; i++) {
+//            out += outArray[i];
+//        }
 
 
     }

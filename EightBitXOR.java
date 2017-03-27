@@ -23,21 +23,21 @@ public class EightBitXOR {
 
     }
 
-    public void execute(){
-        inputA = toBoolean(inA);
-        inputB = toBoolean(inB);
+    public void execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
+//        inputA = toBoolean(inA);
+//        inputB = toBoolean(inB);
 
         for(int i = 7; i>=0;i--){
             xor[i]= new XOrGate();
-            xor[i].set(inputA[i], inputB[i],output[i]);
-            output[i]=xor[i].execute();
+            xor[i].set(r1.getBit(i), r2.getBit(i),out.getBit(i));
+            out.setBit(i,xor[i].execute());
         }
 
-        outArray=toInt(output);
-        out="";
-        for (int i = 0; i < 8; i++) {
-            out += outArray[i];
-        }
+//        outArray=toInt(output);
+//        out="";
+//        for (int i = 0; i < 8; i++) {
+//            out += outArray[i];
+//        }
 
 
     }
