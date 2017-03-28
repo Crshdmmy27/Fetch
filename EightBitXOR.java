@@ -16,6 +16,8 @@ public class EightBitXOR {
     String[] outArray= new String[8];
 
     XOrGate[] xor = new XOrGate[8];
+    
+    GateCounter Gcount = new GateCounter();
 
     public void set(String inA, String inB){
         this.inA = inA;
@@ -23,16 +25,18 @@ public class EightBitXOR {
 
     }
 
-    public void execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
+    public FetchRegister execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
 //        inputA = toBoolean(inA);
 //        inputB = toBoolean(inB);
-
+    	Gcount.tallyIn();
         for(int i = 7; i>=0;i--){
             xor[i]= new XOrGate();
             xor[i].set(r1.getBit(i), r2.getBit(i),out.getBit(i));
-            out.setBit(i,xor[i].execute());
-        }
+            out.setBit(i,xor[i].execute());  
+            
 
+        }
+        return out;
 //        outArray=toInt(output);
 //        out="";
 //        for (int i = 0; i < 8; i++) {

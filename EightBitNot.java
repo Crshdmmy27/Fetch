@@ -5,87 +5,71 @@
  */
 
 public class EightBitNot {
-    private String inA;
-    private String out;
+	private FetchRegister inputA, output;
+	
 
-    boolean[] inputA= new boolean[8];
-    boolean[] output = new boolean[8];
-
-    String[] outArray= new String[8];
+    //String[] outArray= new String[8];
 
     NotGate[] not = new NotGate[8];
+    GateCounter Gcount = new GateCounter();
+    public EightBitNot(){
+    	inputA= new FetchRegister();
+    	output= new FetchRegister();
+    }
 
-    public void set(String inA){
-        this.inA = inA;
+    public void set(FetchRegister input){
+       inputA=input;
 
 
     }
 
-    public void execute(){
-        inputA = toBoolean(inA);
-
+    public FetchRegister execute(FetchRegister first, FetchRegister out){
+        inputA = first;
+        output = out;
+        Gcount.tallyIn();
         for(int i = 7; i>=0;i--){
             not[i]= new NotGate();
-            not[i].set(inputA[i],output[i]);
-            output[i]=not[i].execute();
+            not[i].set(inputA.getBit(i), output.getBit(i));
+            output.setBit(i,not[i].execute());
         }
 
-        outArray=toInt(output);
-        out="";
-        for (int i = 0; i < 8; i++) {
-            out += outArray[i];
-        }
-
-
-    }
-
-    private boolean[] toBoolean(String in) {
-        boolean[] input = new boolean[8];
-        int c = 7;
-
-        for (int i = 0; i < 8; i++) {
-            char temp = in.charAt(c);
-            if (temp=='0')
-                input[c] = false;
-            else if (temp=='1')
-                input[c] = true;
-            c--;
-        }
-        return input;
-    }
-
-
-    private String[] toInt(boolean[] outputBoolean) {
-        String[] output = new String[8];
-
-        for (int i = 0; i < 8; i++) {
-            if (outputBoolean[i] == false) {
-                output[i] = "0";
-            } else {
-                output[i] = "1";
-            }
-        }
+        
         return output;
+
+
     }
 
+	public FetchRegister getInputA() {
+		return inputA;
+	}
 
-    public String getInA() {
-        return inA;
-    }
+	public void setInputA(FetchRegister inputA) {
+		this.inputA = inputA;
+	}
 
+	public FetchRegister getOutput() {
+		return output;
+	}
 
+	public void setOutput(FetchRegister output) {
+		this.output = output;
+	}
 
-    public String getOut() {
-        return out;
-    }
+//	public String[] getOutArray() {
+//		return outArray;
+//	}
+//
+//	public void setOutArray(String[] outArray) {
+//		this.outArray = outArray;
+//	}
 
+	public NotGate[] getNot() {
+		return not;
+	}
 
-    public void setInA(String inA) {
-        this.inA = inA;
-    }
+	public void setNot(NotGate[] not) {
+		this.not = not;
+	}
 
-
-    public void setOut(String out) {
-        this.out = out;
-    }
+ 
 }

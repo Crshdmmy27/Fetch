@@ -19,6 +19,7 @@ public class EightBitAND {
     String[] outArray= new String[8];
 
     AndGate[] and = new AndGate[8];
+    GateCounter Gcount = new GateCounter();
 
     public void set(String inA, String inB){
         this.inA = inA;
@@ -26,10 +27,10 @@ public class EightBitAND {
 
     }
 
-    public void execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
+    public FetchRegister execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
 //        inputA = toBoolean(inA);
 //        inputB = toBoolean(inB);
-
+    	Gcount.tallyIn();
         for(int i = 7; i>=0;i--){
             and[i]= new AndGate();
             and[i].set(r1.getBit(i), r2.getBit(i),out.getBit(i));
@@ -41,6 +42,7 @@ public class EightBitAND {
 //        for (int i = 0; i < 8; i++) {
 //            out += outArray[i];
 //        }
+        return out;
 
 
     }

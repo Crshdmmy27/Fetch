@@ -24,12 +24,16 @@ public class FetchMulti {
 		output=input1;
 		for(int i = 0; i<8; i++){
 			
-			for(int j =0;j+i<8;j++){
+			for(int j =1;j+i<8;j++){
 				offset.setBit(j+i, input1.getBit(j));
 			}
 			if(input2.getBit(i)==true)
 			{
 			output=alu.execute(output, offset, out, "0");
+			
+			if(alu.psw.getC()==true)
+				p.setV();
+			
 			System.out.println("LOL");
 			}
 			

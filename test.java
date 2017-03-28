@@ -4,7 +4,7 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		FetchCPU test = new FetchCPU();
-		
+		FetchMem mem = new FetchMem();
 		
 		FetchRegister r1 = new FetchRegister();
 		r1.setBit(1);
@@ -92,12 +92,35 @@ public class test {
 //		r.halt();
 //		r1.print();
 		
-		FetchMulti m = new FetchMulti();
-		FetchPSW psw = new FetchPSW();
-		out= m.execute(r1, r2, out, psw);
-		r1.print();
-		r2.print();
+//		FetchMulti m = new FetchMulti();
+//		FetchPSW psw = new FetchPSW();
+//		out= m.execute(r1, r2, out, psw);
+//		r1.print();
+//		r2.print();
+//		out.print();
+//		
+		//INC
+		boolean[] code = {true, false, true, false};
+		boolean[] ssss = {false, false, false, false};
+		boolean[] dddd = {false, false, false, false};
+		
+		test.data.setCell(0, code, ssss, dddd);
+		
+		out = test.getData(0);
 		out.print();
+		
+		//dec
+		code[3] = true;
+		
+				
+		test.data.setCell(0, code, ssss, dddd);
+		test.r0.setBit(0);
+		out = test.getData(0);
+		out.print();
+		
+		
+		
+		
 		
 		
 	}

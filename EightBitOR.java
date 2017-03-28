@@ -6,33 +6,30 @@
 
 public class EightBitOR {
 
-    private String inA;
-    private String inB;
-    private String out;
-
-    boolean[] inputA= new boolean[8];
-    boolean[] inputB= new boolean[8];
-    boolean[] output = new boolean[8];
+    private FetchRegister inputA,inputB,output;
 
     String[] outArray= new String[8];
 
     OrGate[] or = new OrGate[8];
+    GateCounter Gcount = new GateCounter();
 
-    public void set(String inA, String inB){
-        this.inA = inA;
-        this.inB = inB;
+    public void set(FetchRegister A, FetchRegister B){
+    	inputA = A;
+    	inputB=B;
+        
 
     }
 
-    public void execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
+    public FetchRegister execute(FetchRegister r1, FetchRegister r2, FetchRegister out){
 //        inputA = toBoolean(inA);
 //        inputB = toBoolean(inB);
-
+    	Gcount.tallyIn();
         for(int i = 7; i>=0;i--){
             or[i]= new OrGate();
             or[i].set(r1.getBit(i), r2.getBit(i),out.getBit(i));
             out.setBit(i,or[i].execute());
         }
+        return out;
 
 //        outArray=toInt(output);
 //        out="";
@@ -72,29 +69,46 @@ public class EightBitOR {
         return output;
     }
 
+	public FetchRegister getInputA() {
+		return inputA;
+	}
 
-    public String getInA() {
-        return inA;
-    }
+	public void setInputA(FetchRegister inputA) {
+		this.inputA = inputA;
+	}
 
-    public String getInB() {
-        return inB;
-    }
+	public FetchRegister getInputB() {
+		return inputB;
+	}
 
-    public String getOut() {
-        return out;
-    }
+	public void setInputB(FetchRegister inputB) {
+		this.inputB = inputB;
+	}
+
+	public FetchRegister getOutput() {
+		return output;
+	}
+
+	public void setOutput(FetchRegister output) {
+		this.output = output;
+	}
+
+	public String[] getOutArray() {
+		return outArray;
+	}
+
+	public void setOutArray(String[] outArray) {
+		this.outArray = outArray;
+	}
+
+	public OrGate[] getOr() {
+		return or;
+	}
+
+	public void setOr(OrGate[] or) {
+		this.or = or;
+	}
 
 
-    public void setInA(String inA) {
-        this.inA = inA;
-    }
 
-    public void setInB(String inB) {
-        this.inB = inB;
-    }
-
-    public void setOut(String out) {
-        this.out = out;
-    }
 }
